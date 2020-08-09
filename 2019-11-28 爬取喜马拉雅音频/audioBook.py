@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import requests
 import json
-import time
 from lxml import etree
 
 
@@ -74,14 +73,16 @@ class XiMaLaYa(object):
                 f.write(data.content)
 
     def main(self):
+        global introduction
         for page in self.page_url():
             print(page)
             introduction = self.send_requests(page)
+
             self.save_media(self.download_chapter_audio(page), page)
             if not self.get_chapter_info(introduction):
                 break
             # self.download_chapter_audio()
-            # self.save_introduction(self.book_introduction(introduction))
+        self.save_introduction(self.book_introduction(introduction))
 
 
 if __name__ == '__main__':
