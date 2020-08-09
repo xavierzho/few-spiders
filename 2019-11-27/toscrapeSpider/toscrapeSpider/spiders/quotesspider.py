@@ -21,7 +21,7 @@ class QuotesspiderSpider(scrapy.Spider):
             text = selector.xpth('.//span[@class="text"]/text()').get()
             print(text)
             # 保存数据
-            items ={
+            items = {
                 'text': text
             }
             yield items  #
