@@ -1,4 +1,3 @@
-
 import requests
 import re
 from lxml import etree
@@ -10,7 +9,7 @@ headers = {
 
 
 def join_url():
-    for i in range(1, 2):
+    for i in range(1, 2):  # 可调整需要下载页数
         url = 'https://www.fabiaoqing.com/biaoqing/lists/page/{}.html'.format(i)
         yield url
 

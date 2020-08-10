@@ -61,7 +61,7 @@ def view_html():
     option = webdriver.ChromeOptions()
     option.add_argument('headless')
     driver = webdriver.Chrome(
-        executable_path='D:/ChromeDriver/chromedriver.exe',
+        executable_path='D:/Devtools/ChromeDriver/chromedriver.exe',  # 浏览器driver所在的绝对路径
         chrome_options=option
     )
     driver.get('https://y.qq.com/n/yqq/toplist/26.html')
