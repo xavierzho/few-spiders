@@ -12,7 +12,7 @@ class AmazonSpider:
 
     def get_url_list(self):
         url_list = ['https://www.amazon.cn/s?rh=n%3A42689071%2Cn%3A%2142690071%2Cn%3A106200071'
-                    '&page={}&qid=1598180183&ref=lp_106200071_pg_2 '.format(i) for i in range(2, 100)]
+                    '&page={}&qid=1598180183&ref=lp_106200071_pg_2 '.format(i) for i in range(2, 101)]
         return url_list
 
     def get_html_text(self, url):
