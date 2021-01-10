@@ -20,7 +20,7 @@ base_url = "https://www.cnblogs.com/sitehome/p/{}"
 seen_urls = set()
 queue = asyncio.Queue()
 sem = asyncio.Semaphore(value=10)  # 减少并发，防止被封ip
-start_urls = [queue.put_nowait(base_url.format(i)) for i in range(5, 0, -1)]
+start_urls = [queue.put_nowait(base_url.format(i)) for i in range(200, 0, -1)]
 
 
 async def fetch(url, session):
