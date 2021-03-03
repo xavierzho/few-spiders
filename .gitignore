@@ -1,5 +1,5 @@
-.vscode
-.idea
+\.vscode\
+\.idea\
 imgaes
 *.png
 *.jpg
