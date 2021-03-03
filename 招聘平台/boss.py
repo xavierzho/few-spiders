@@ -5,10 +5,10 @@ from selenium.webdriver.support import expected_conditions as ec
 
 profile = webdriver.FirefoxProfile()
 
-driver = webdriver.Firefox(executable_path="D:\\WebDriver\\geckodriver.exe", firefox_profile=profile)
+dv = webdriver.Firefox(executable_path="D:\\WebDriver\\geckodriver.exe", firefox_profile=profile)
 
 
-def get_items(kw):
+def get_items(kw, driver):
     driver.get("https://www.zhipin.com/guangzhou/?ka=header-home")
 
     driver.find_element_by_class_name("ipt-search").send_keys(kw)
@@ -30,4 +30,5 @@ def get_items(kw):
 
 if __name__ == '__main__':
     keyword = "Go"
-    get_items(kw=keyword)
+    get_items(kw=keyword, driver=dv)
+
