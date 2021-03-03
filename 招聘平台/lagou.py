@@ -34,25 +34,25 @@ def get_items(kw, driver):
 
 
 def parse_detail(driver):
-    # while len(queue) > 0:
-        # url = queue.pop()
-        # driver.get(url)
-    driver.get("https://www.lagou.com/jobs/8063954.html?show=0070a35276cb4131bd4a5ec5a709d1e7")
-    wait = WebDriverWait(driver, 10)
-    wait.until(ec.presence_of_all_elements_located((By.CSS_SELECTOR, ".job_bt")))
-    # print(driver.find_elements_by_css_selector(".job-detail"))
-    return {
-        'title': driver.find_element_by_css_selector(".position-head-wrap-name").text,
-        'sec': [i.text.strip() for i in driver.find_elements_by_css_selector(".job-detail br")],
-        'salary': driver.find_element_by_css_selector(".salary").text,
-        'city': driver.find_element_by_css_selector(".job_request span:nth-child(2)").text,
-        'years': driver.find_element_by_css_selector('.job_request span:nth-child(3)').text,
-        'education': driver.find_element_by_css_selector('.job_request span:nth-child(4)').text
-    }
+    while len(queue) > 0:
+        url = queue.pop()
+        driver.get(url)
+        driver.get("https://www.lagou.com/jobs/8063954.html?show=0070a35276cb4131bd4a5ec5a709d1e7")
+        wait = WebDriverWait(driver, 10)
+        wait.until(ec.presence_of_all_elements_located((By.CSS_SELECTOR, ".job_bt")))
+
+        return {
+            'title': driver.find_element_by_css_selector(".position-head-wrap-name").text,
+            'sec': [i.text.strip() for i in driver.find_elements_by_css_selector(".job-detail br")],
+            'salary': driver.find_element_by_css_selector(".salary").text,
+            'city': driver.find_element_by_css_selector(".job_request span:nth-child(2)").text,
+            'years': driver.find_element_by_css_selector('.job_request span:nth-child(3)').text,
+            'education': driver.find_element_by_css_selector('.job_request span:nth-child(4)').text
+        }
 
 
 if __name__ == '__main__':
     keyword = "GO"
-    # get_items(kw=keyword, driver=dv)
+    get_items(kw=keyword, driver=dv)
     print(parse_detail(dv))
     dv.quit()
