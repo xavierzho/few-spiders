@@ -1,3 +1,5 @@
+import pymongo
+import copy
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -40,7 +42,7 @@ def parse_detail(driver) -> dict:
         wait = WebDriverWait(driver, 10)
         wait.until(ec.presence_of_all_elements_located((By.CSS_SELECTOR, ".job-sec")))
 
-        return {
+        yield {
             'title': driver.find_element_by_css_selector(".job-primary .name").text,
             'sec': driver.find_element_by_css_selector(".job-sec:first-child").text,
             'salary': driver.find_element_by_css_selector(".salary").text,
@@ -50,7 +52,18 @@ def parse_detail(driver) -> dict:
         }
 
 
+def save():
+    client = pymongo.MongoClient(host='localhost', port=27017)
+    collection = client['job']['boss']
+    for i in parse_detail(dv):
+        try:
+            collection.insert_one(copy.deepcopy(i))
+        except:
+            print(i)
+    client.close()
+
+
 if __name__ == '__main__':
     keyword = "Go"
     get_items(kw=keyword, driver=dv)
-    parse_detail(dv)
+    save()
