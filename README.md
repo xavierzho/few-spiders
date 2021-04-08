@@ -21,6 +21,6 @@
 ## 异步
 
 -   [x] 博客园
--   [x] [国内新闻系列](# https://github.com/Jonescy/focusnews)
+-   [x] [国内新闻系列](https://github.com/Jonescy/focusnews)
 
 
